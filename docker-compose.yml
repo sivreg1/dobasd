@@ -14,7 +14,7 @@ services:
       - APP_NAME=${APP_NAME:-FastAPI Shop}
       - DEBUG=${DEBUG:-False}
       - DATABASE_URL=sqlite:///./shop.db
-      - CORS_ORIGINS=https://${DOMAIN},https://www.${DOMAIN}
+      - CORS_ORIGINS=["https://${DOMAIN}","https://www.${DOMAIN}"]
     expose:
       - "8000"
     restart: unless-stopped
