@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     build:
@@ -10,10 +8,11 @@ services:
     volumes:
       - ./backend:/app
       - backend_static:/app/static
+      - backend_data:/app/data
     environment:
       - APP_NAME=${APP_NAME:-FastAPI Shop}
       - DEBUG=${DEBUG:-False}
-      - DATABASE_URL=sqlite:///./shop.db
+      - DATABASE_URL=sqlite:////app/data/shop.db
       - CORS_ORIGINS=["https://${DOMAIN}","https://www.${DOMAIN}"]
     expose:
       - "8000"
@@ -74,3 +73,4 @@ networks:
 
 volumes:
   backend_static:
+  backend_data:
